@@ -1,0 +1,27 @@
+.forum-header {
+    margin: 10px auto 0 auto;
+    max-width: 1000px;
+}
+
+.rt-td {
+    padding: 100px;
+}
+
+.post-button {
+    margin: 5px 0 5px 3px;
+    background: green;
+    color: white;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+textarea { 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    font-size: 14px;
+    border-style: none;
+    border-color: Transparent;
+    overflow: auto;
+    outline: none;      
+}

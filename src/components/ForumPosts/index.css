@@ -1,0 +1,8 @@
+.post-button {
+    margin: 5px 0 5px 3px;
+    background: green;
+    color: white;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+}
