@@ -1,30 +1,29 @@
 
 // Import the React library
 import React from "react";
+
+// Import Lodash library
 import _ from "lodash";
+
+// Import QueryString library
 import queryString from 'query-string';
 
-// Import React Table
-import ReactTable from "react-table";
-import "react-table/react-table.css";
-import { Book } from "@material-ui/icons";
+// Import Table component
+import TopicsTable from  "../TopicsTable";
+
+// Import Custom css
 import "./index.css";
 
 const testData = [
-    {
-        author: 'mhenderson',
-        pid: 0,
-        postDate: '06-01-2019 07:12:46 a.m.',
-        data: "I recently had to come off of xanax because I became addicted to it. However, it worked so well for me. Vicodin and\nKlonipin have had no effect on my anxiety, which is very strong. Are there any alternative anyone has take that work?\nAlso, I am bi-polar with severe depression and anxiety disorders."
-    },    
-    {
-        author: 'mjciatto',
-        pid: 1,
-        postDate: '06-02-2019 10:43:19 a.m.',
-        data: "I recently had to come off of xanax because I became addicted to it. However, it worked so well for me. Vicodin and\nKlonipin have had no effect on my anxiety, which is very strong. Are there any alternative anyone has take that work?\nAlso, I am bi-polar with severe depression and anxiety disorders."
-    }
+  {
+      topic: 'Welcome to AutismPocketBook',
+      author: 'mhenderson',
+      tid: 0,
+      replies: '40',
+      views: 15,
+      lastPost: '08-11-2018 07:12:46 a.m.'
+  }
 ];
-
 
 const rawData = testData;
 
@@ -114,84 +113,7 @@ class ForumTopics extends React.Component {
                 <h1>Forum: AutismPocketBook News</h1>
             </div>
             <div className="container">
-                <ReactTable
-                    columns={[
-                    {
-                        Header: "Topics",
-                        accessor: "topics",
-                        headerStyle: {textAlign: 'center', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
-                        Cell: row => (
-                        <div>
-                            <a className="table-icon" href="/"><Book /></a>                    
-                            <div className="table-header">
-                                <span>
-                                    <a href={"/forum/listposts?tid=" + row.original.tid}>{row.original.topic}</a>
-                                </span>
-                                <p className="table-info-text">{"Author: " + row.original.author}</p>
-                            </div>
-                        </div>
-                        ),
-                        width: 600
-                    },
-                    {
-                        Header: "Replies",
-                        accessor: "replies",
-                        headerStyle: {textAlign: 'left', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
-                        Cell: row => (
-                        <div className="table-cell">
-                            <span className="table-info-text">
-                                {row.original.replies}
-                            </span>
-                        </div>
-                        ),
-                        width: 80
-                    },
-                    {
-                        Header: "Views",
-                        accessor: "views",
-                        headerStyle: {textAlign: 'left', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
-                        Cell: row => (
-                        <div className="table-cell">
-                            <span className="table-info-text">
-                                {row.original.views}
-                            </span>
-                        </div>
-                        ),
-                        width: 80
-                    },
-                    {
-                        Header: "Last Post",
-                        accessor: "lastPost",
-                        headerStyle: {textAlign: 'left', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
-                        Cell: row => (
-                        <div className="table-cell">
-                            <span className="table-info-text">
-                                {row.original.lastPost}
-                            </span>
-                        </div>
-                        ),
-                        width:238
-                    }
-                    ]}
-                    manual // Forces table not to paginate or sort automatically, so we can handle it server-side
-                    data={[
-                    {
-                        topic: 'Welcome to AutismPocketBook',
-                        author: 'mhenderson',
-                        tid: 0,
-                        replies: '40',
-                        views: 15,
-                        lastPost: '08-11-2018 07:12:46 a.m.'
-                    }
-                    ]}
-                    onFetchData={this.fetchData} // Request new data when things change
-                    //showPagination={false}
-                    //pageSize={data.length}
-                    //className="-striped -highlight"
-                    //loading={loading} // Display the loading overlay when we need it                    
-                    pages={pages} // Display the total number of pages
-                    defaultPageSize={10}
-                />
+              <TopicsTable data={data} />
             </div>
           </React.Fragment>
       );

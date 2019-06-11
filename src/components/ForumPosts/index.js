@@ -10,6 +10,10 @@ import queryString from 'query-string';
 // Import Table component
 import PostTable from  "../PostTable";
 
+// Import Custom css
+import "./index.css";
+
+const postTitle = "Welcome to AutismPocketBook";
 const testData = [
     {
         author: 'mhenderson',
@@ -117,13 +121,18 @@ class ForumPosts extends React.Component {
       //console.log(data);
       return(
         <React.Fragment>
-        <div className="container">                  
-          <button className="post-button" onClick={this.handleOnClick}>Post Reply</button>
-          {data.map(cellData => (
-            <PostTable data={cellData} key={key++}/>
-          ))}                                
+        <div className="forum-header">                
+            <h1>{postTitle}</h1>                
           <button className="post-button" onClick={this.handleOnClick}>Post Reply</button>
         </div>
+        <div className="container">  
+          {data.map(cellData => (
+            <PostTable data={cellData} key={key++}/>
+          ))}
+        </div>
+        <div className="forum-header">               
+          <button className="post-button" onClick={this.handleOnClick}>Post Reply</button>
+        </div> 
         </React.Fragment>
       );
     }

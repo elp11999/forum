@@ -24,41 +24,71 @@ class TopicsTable extends React.Component {
 
     render() {
         const { data } = this.props;
-        //console.log(data);
+        console.log(data);
         return(
             <ReactTable
                 columns={[
                 {
-                    Header: data.author,
-                    accessor: "author",
+                    Header: "Topics",
+                    accessor: "topics",
                     headerStyle: {textAlign: 'center', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
                     Cell: row => (
                     <div>
-                        <span className="table-icon"><Book /></span>                    
+                        <a className="table-icon" href="/"><Book /></a>                    
                         <div className="table-header">
-                            <p className="table-info-text">{data.author}</p>
+                            <span>
+                                <a href={"/forum/listposts?tid=" + row.original.tid}>{row.original.topic}</a>
+                            </span>
+                            <p className="table-info-text">{"Author: " + row.original.author}</p>
                         </div>
                     </div>
                     ),
-                    width: 200
+                    width: 600
                 },
                 {
-                    Header: data.postDate,
-                    headerStyle: {textAlign: 'center', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
+                    Header: "Replies",
+                    accessor: "replies",
+                    headerStyle: {textAlign: 'left', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
                     Cell: row => (
                     <div className="table-cell">
-                        <textarea className="table-info-text" rows="5" cols="400" value={row.original.data} onChange={this.onChange}>
-                        </textarea>
+                        <span className="table-info-text">
+                            {row.original.replies}
+                        </span>
                     </div>
                     ),
-                    width: 798
+                    width: 80
+                },
+                {
+                    Header: "Views",
+                    accessor: "views",
+                    headerStyle: {textAlign: 'left', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
+                    Cell: row => (
+                    <div className="table-cell">
+                        <span className="table-info-text">
+                            {row.original.views}
+                        </span>
+                    </div>
+                    ),
+                    width: 80
+                },
+                {
+                    Header: "Last Post",
+                    accessor: "lastPost",
+                    headerStyle: {textAlign: 'left', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
+                    Cell: row => (
+                    <div className="table-cell">
+                        <span className="table-info-text">
+                            {row.original.lastPost}
+                        </span>
+                    </div>
+                    ),
+                    width:238
                 }
                 ]}
                 manual
-                data={new Array(data)}
-                defaultPageSize={1}
-                showPagination={false}
-                //pageSize={data.length}
+                data={data}
+                defaultPageSize={data.length}
+                showPagination={data.length > 5 ? true : false}
                 //className="-striped -highlight"
                 //loading={loading} // Display the loading overlay when we need it                    
                 //pages={pages} // Display the total number of pages

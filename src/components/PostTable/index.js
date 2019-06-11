@@ -24,7 +24,7 @@ class PostTable extends React.Component {
 
     render() {
         const { data } = this.props;
-        //console.log(data);
+        console.log(data);
         return(
             <ReactTable
                 columns={[
