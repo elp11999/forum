@@ -14,16 +14,27 @@ import TopicsTable from  "../TopicsTable";
 // Import Custom css
 import "./index.css";
 
-const testData = [
-  {
-      topic: 'Welcome to AutismPocketBook',
-      author: 'mhenderson',
-      tid: 0,
-      replies: '40',
-      views: 15,
-      lastPost: '08-11-2018 07:12:46 a.m.'
-  }
-];
+const testData = {
+      folder: "AutismPocketBook News",
+      topics : [        
+        {
+          title: 'Welcome to AutismPocketBook',
+          author: 'mhenderson',
+          tid: 0,
+          replies: '40',
+          views: 15,
+          lastPost: '06-10-2019 07:12:46 a.m.'
+        },                
+        {
+          title: 'Forum has been added',
+          author: 'mhenderson',
+          tid: 1,
+          replies: '2',
+          views: 5,
+          lastPost: '06-11-2019 07:12:46 a.m.'
+        }
+      ]
+};
 
 const rawData = testData;
 
@@ -84,6 +95,10 @@ class ForumTopics extends React.Component {
         console.log("Forum Topics: tid=" + values.tid);
     }
 
+    handleOnClick = (evt) => {
+      console.log("ForumTopics: New button clicked.");
+    }
+
     fetchData(state, instance) {
       // Whenever the table model changes, or the user sorts or changes pages, this method gets called and passed the current table model.
       // You can set the `loading` prop of the table to true to use the built-in one or show you're own loading bar if you want.
@@ -107,13 +122,19 @@ class ForumTopics extends React.Component {
 
     render() {
       const { data, pages, loading } = this.state;
+      console.log(data);
       return (
         <React.Fragment>
-            <div className="forum-header">                
-                <h1>Forum: AutismPocketBook News</h1>
+            <div className="forum-header">
+                <img className="forum-image" src="/Forum1.png" alt="forum"></img>                 
+                <h1 className="forum-title">Forum: {data.folder}</h1>              
+                <button className="post-button" onClick={this.handleOnClick}>New Topic</button>
             </div>
             <div className="container">
-              <TopicsTable data={data} />
+              <TopicsTable data={data.topics} />
+            </div>
+            <div className="forum-header">              
+          <button className="post-button" onClick={this.handleOnClick}>New Topic</button>
             </div>
           </React.Fragment>
       );

@@ -38,9 +38,9 @@ class FoldersTable extends React.Component {
                             <a className="table-icon" href="/"><Folder /></a>                    
                             <div className="table-header">
                                 <span>
-                                    <a href={"/forum/topic?tid=" + row.original.tid}>{row.original.folder}</a>
+                                    <a href={"/forum/topic?tid=" + row.original.tid}>{row.original.title}</a>
                                 </span>
-                                <p className="table-info-text">{row.original.title}</p>
+                                <p className="table-info-text">{row.original.description}</p>
                             </div>
                         </div>
                         ),
@@ -87,8 +87,8 @@ class FoldersTable extends React.Component {
                     }
                 ]}
                 manual
-                data={data.topics}
-                defaultPageSize={data.topics.length}
+                data={data.folders}
+                defaultPageSize={data.folders.length}
                 showPagination={false}
                 //pageSize={data.length}
                 //className="-striped -highlight"

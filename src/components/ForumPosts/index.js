@@ -13,21 +13,23 @@ import PostTable from  "../PostTable";
 // Import Custom css
 import "./index.css";
 
-const postTitle = "Welcome to AutismPocketBook";
-const testData = [
+const testData = {
+  topic: "Welcome to AutismPocketBook",
+  posts : [ 
     {
         author: 'mhenderson',
         pid: 0,
         postDate: '06-01-2019 07:12:46 a.m.',
-        data: "I recently had to come off of xanax because I became addicted to it. However, it worked so well for me. Vicodin and\nKlonipin have had no effect on my anxiety, which is very strong. Are there any alternative anyone has take that work?\nAlso, I am bi-polar with severe depression and anxiety disorders."
+        data: "Congue cursus praesent erat torquent habitasse aenean himenaeos sapien dictum.Curae; vivamus fames facilisi quam ac\nsemper viverra sodales fames. Risus neque aptent imperdiet tincidunt fringilla sodales cum ultricies etiam. Morbi nibh\ncurae; feugiat donec, purus dapibus tincidunt tristique accumsan."
     },    
     {
         author: 'mjciatto',
         pid: 1,
         postDate: '06-02-2019 10:43:19 a.m.',
-        data: "I recently had to come off of xanax because I became addicted to it. However, it worked so well for me. Vicodin and\nKlonipin have had no effect on my anxiety, which is very strong. Are there any alternative anyone has take that work?\nAlso, I am bi-polar with severe depression and anxiety disorders."
+        data: "Congue cursus praesent erat torquent habitasse aenean himenaeos sapien dictum.Curae; vivamus fames facilisi quam ac\nsemper viverra sodales fames. Risus neque aptent imperdiet tincidunt fringilla sodales cum ultricies etiam. Morbi nibh\ncurae; feugiat donec, purus dapibus tincidunt tristique accumsan."
     }
-];
+  ]
+};
 
 const rawData = testData;
 
@@ -121,12 +123,13 @@ class ForumPosts extends React.Component {
       //console.log(data);
       return(
         <React.Fragment>
-        <div className="forum-header">                
-            <h1>{postTitle}</h1>                
-          <button className="post-button" onClick={this.handleOnClick}>Post Reply</button>
+        <div className="forum-header">
+            <img className="forum-image" src="/Forum1.png" alt="forum"></img>                
+            <h1 className="forum-title">{data.topic}</h1>                
+            <button className="post-button" onClick={this.handleOnClick}>Post Reply</button>
         </div>
         <div className="container">  
-          {data.map(cellData => (
+          {data.posts.map(cellData => (
             <PostTable data={cellData} key={key++}/>
           ))}
         </div>

@@ -19,10 +19,10 @@ import "./index.css";
 const testData = [
   {
       category: "AutsimPocketBook.com",
-      topics : [        
+      folders : [        
         {
-          folder: 'AutismPocketBook News',
-          title: 'Website news and updates are posted here.',
+          title: 'AutismPocketBook News',
+          description: 'Website news and updates are posted here.',
           tid: 0,
           topics: '40',
           replies: 15,
@@ -32,50 +32,50 @@ const testData = [
   },
   {
       category: "General",
-      topics : [
+      folders : [
         {
-            folder: 'Nutrition',
-            title: 'Nutrition discussions are posted here.',
+            title: 'Nutrition',
+            description: 'Nutrition discussions are posted here.',
             tid: 0,
             topics: '10',
             replies: 5,
             lastPost: '09-11-2018 11:37:46 p.m.'
         },
         {
-            folder: 'Sleep',
-            title: 'Sleep discussions are posted here.',
+            title: 'Sleep',
+            description: 'Sleep discussions are posted here.',
             tid: 1,
             topics: '22',
             replies: 7,
             lastPost: '09-12-2018 08:37:46 p.m.'
         },
         {
-            folder: 'Medications',
-            title: 'Medication discussions are posted here.',
+            title: 'Medications',
+            description: 'Medication discussions are posted here.',
             tid: 2,
             topics: '7',
             replies: 21,
             lastPost: '06-06-2019 05:37:46 p.m.'
         },
         {
-            folder: 'Excercise',
-            title: 'Excercise discussions are posted here.',
+            title: 'Excercise',
+            description: 'Excercise discussions are posted here.',
             tid: 3,
             topics: '18',
             replies: 9,
             lastPost: '06-01-2019 10:10:55 a.m.'
         },
         {
-            folder: 'Behaviour',
-            title: 'Behaviour discussions are posted here.',
+            title: 'Behaviour',
+            description: 'Behaviour discussions are posted here.',
             tid: 4,
             topics: '66',
             replies: '120',
             lastPost: '06-03-2019 06:23:55 a.m.'
         },
         {
-            folder: 'Therapy',
-            title: 'Therapy discussions are posted here.',
+            title: 'Therapy',
+            description: 'Therapy discussions are posted here.',
             tid: 5,
             topics: '66',
             replies: '120',
@@ -166,8 +166,9 @@ class ForumFolders extends React.Component {
     let key = 1;
     return (
       <React.Fragment>
-          <div className="forum-header">               
-              <h1>Forum</h1>
+          <div className="forum-header">
+              <img className="forum-image" src="/Forum1.png" alt="forum"></img>             
+              <h1 className="forum-title">Forum</h1>
           </div>
         <div className="container"> 
           {data.map(cellData => (

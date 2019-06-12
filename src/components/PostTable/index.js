@@ -43,8 +43,8 @@ class PostTable extends React.Component {
                     width: 200
                 },
                 {
-                    Header: data.postDate,
-                    headerStyle: {textAlign: 'center', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
+                    Header: "Post: " + data.postDate,
+                    headerStyle: {textAlign: 'left', backgroundColor: "blue", color: "white", borderRight: "1px solid lightgray"},
                     Cell: row => (
                     <div className="table-cell">
                         <textarea className="table-info-text" rows="5" cols="400" value={row.original.data} onChange={this.onChange}>

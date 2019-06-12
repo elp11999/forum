@@ -37,7 +37,7 @@ class TopicsTable extends React.Component {
                         <a className="table-icon" href="/"><Book /></a>                    
                         <div className="table-header">
                             <span>
-                                <a href={"/forum/listposts?tid=" + row.original.tid}>{row.original.topic}</a>
+                                <a href={"/forum/listposts?tid=" + row.original.tid}>{row.original.title}</a>
                             </span>
                             <p className="table-info-text">{"Author: " + row.original.author}</p>
                         </div>

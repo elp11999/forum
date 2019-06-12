@@ -32,6 +32,18 @@ a {
     border-radius: 5px;
 }
 
+.forum-image {
+    margin: 0 5px 0 0;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+}
+
+.forum-title {
+    margin: 0 0 10px 0;
+    display: inline-block;
+}
+
 .rt-thead {
     font-size: 18px;
     font-weight: bold;
