@@ -11,6 +11,9 @@ import queryString from 'query-string';
 // Import Table component
 import TopicsTable from  "../TopicsTable";
 
+// Import Table component
+import NewForumTopic from  "../NewForumTopic";
+
 // Import Custom css
 import "./index.css";
 
@@ -84,6 +87,7 @@ class ForumTopics extends React.Component {
       super();
       this.state = {
         data: testData,
+        showNewTopic: false,
         pages: null,
         loading: true
       };
@@ -95,8 +99,19 @@ class ForumTopics extends React.Component {
         console.log("Forum Topics: tid=" + values.tid);
     }
 
-    handleOnClick = (evt) => {
-      console.log("ForumTopics: New button clicked.");
+    handleNewTopicOnClick = (evt) => {
+      console.log("ForumTopics: New button clicked.");      
+      this.setState({showNewTopic: true});
+    }
+
+    handleNewTopicOnSaveClick = (evt) => {
+      console.log("ForumTopics: New Topic save clicked.");      
+      this.setState({showNewTopic: false});
+    }
+
+    handleONewTopicOnCancelClick = (evt) => {
+      console.log("ForumTopics: New Topic cancel clicked.");      
+      this.setState({showNewTopic: false});
     }
 
     fetchData(state, instance) {
@@ -119,23 +134,28 @@ class ForumTopics extends React.Component {
       });
     }
     
-
     render() {
       const { data, pages, loading } = this.state;
-      console.log(data);
+      //console.log(data);
       return (
         <React.Fragment>
             <div className="forum-header">
                 <img className="forum-image" src="/Forum1.png" alt="forum"></img>                 
                 <h1 className="forum-title">Forum: {data.folder}</h1>              
-                <button className="post-button" onClick={this.handleOnClick}>New Topic</button>
+                <button className="post-button" onClick={this.handleNewTopicOnClick}>New Topic</button>
             </div>
             <div className="container">
               <TopicsTable data={data.topics} />
             </div>
             <div className="forum-header">              
-          <button className="post-button" onClick={this.handleOnClick}>New Topic</button>
+              <button className="post-button" onClick={this.handleNewTopicOnClick}>New Topic</button>
             </div>
+            
+            <NewForumTopic 
+              open={this.state.showNewTopic}
+              onSave={this.handleNewTopicOnSaveClick}
+              onCancel={this.handleONewTopicOnCancelClick}
+            />
           </React.Fragment>
       );
     }

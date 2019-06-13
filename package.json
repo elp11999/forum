@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.0.2",
     "@material-ui/icons": "^4.0.1",
+    "formik": "^1.5.7",
     "install": "^0.12.2",
     "lodash": "4.17.4",
     "namor": "1.0.1",
