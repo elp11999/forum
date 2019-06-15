@@ -10,6 +10,9 @@ import queryString from 'query-string';
 // Import Table component
 import PostTable from  "../PostTable";
 
+// Import Table component
+import NewForumPost from  "../NewForumPost";
+
 // Import Custom css
 import "./index.css";
 
@@ -80,6 +83,7 @@ class ForumPosts extends React.Component {
       super();
       this.state = {
         data: testData,
+        showNewPost: false,
         pages: null,
         loading: true
       };
@@ -91,8 +95,19 @@ class ForumPosts extends React.Component {
         console.log("ForumPost: tid=" + values.tid);
     }
 
-    handleOnClick = (evt) => {
-      console.log("ForumPost: Reply button clicked.");
+    handleNewPostOnClick = (evt) => {
+      console.log("ForumPost: New button clicked.");      
+      this.setState({showNewPost: true});
+    }
+
+    handleNewPostOnSaveClick = (evt) => {
+      console.log("ForumPost: New Post save clicked.");      
+      this.setState({showNewPost: false});
+    }
+
+    handleONewPostOnCancelClick = (evt) => {
+      console.log("ForumPost: New Post cancel clicked.");      
+      this.setState({showNewPost: false});
     }
 
     fetchData(state, instance) {
@@ -126,7 +141,7 @@ class ForumPosts extends React.Component {
         <div className="forum-header">
             <img className="forum-image" src="/Forum1.png" alt="forum"></img>                
             <h1 className="forum-title">{data.topic}</h1>                
-            <button className="post-button" onClick={this.handleOnClick}>Post Reply</button>
+            <button className="post-button" onClick={this.handleNewPostOnClick}>Post Reply</button>
         </div>
         <div className="container">  
           {data.posts.map(cellData => (
@@ -134,8 +149,15 @@ class ForumPosts extends React.Component {
           ))}
         </div>
         <div className="forum-header">               
-          <button className="post-button" onClick={this.handleOnClick}>Post Reply</button>
-        </div> 
+          <button className="post-button" onClick={this.handleNewPostOnClick}>Post Reply</button>
+        </div>
+        
+            
+        <NewForumPost 
+              open={this.state.showNewPost}
+              onSave={this.handleNewPostOnSaveClick}
+              onCancel={this.handleONewPostOnCancelClick}
+        /> 
         </React.Fragment>
       );
     }
